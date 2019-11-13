@@ -11,7 +11,7 @@ Re-service allows re-frame user to easily define services. A service here is a n
 and execute effects required or issued by re-frame event handlers. What re-service does is it translates re-frame co-effects/effects
 descriptors into service function calls return values.
 
-== API
+== Basic API
 
 === Service definition
 
