@@ -42,13 +42,15 @@
               ::my-event
               [(rf/inject-cofx ::my-service [::as-my-key ::my-sum [1 2 3 4 5]])]
               (fn [cofx]
-                (casync/put! c (::as-my-key cofx))))
+                (casync/put! c (::as-my-key cofx))
+                {}))
 
              (rf/reg-event-fx
               ::my-event-raw
               [(rf/inject-cofx ::my-service [::as-my-key ::my-sum-raw [1 2 3 4 5]])]
               (fn [cofx]
-                (casync/put! c (::as-my-key cofx))))
+                (casync/put! c (::as-my-key cofx))
+                {}))
 
              (casync/go
 
