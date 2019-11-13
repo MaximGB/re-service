@@ -18,8 +18,9 @@ descriptors into service function calls return values.
 A service can be defined using macros or function calls from `maximgb.re-service.core` namespace.
 
 To define a service and it's implementation one have to:
-- define a service having  application unique id
-- define set of named commands by providing command id and implementing function for the service registed
+
+. define a service having  application unique id
+. define set of named commands by providing command id and implementing function for the service registed
 
 [source, clojure]
 ----
