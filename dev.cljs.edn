@@ -1,0 +1,5 @@
+^{:watch-dirs ["src" "test"]
+  :css-dirs ["resources/public"]
+  :auto-testing true}
+{:main maximgb.re-service.core
+ :source-map true}
