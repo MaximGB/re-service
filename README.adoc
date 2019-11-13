@@ -27,7 +27,7 @@ To define a service and it's implementation one have to:
 (ns my.service.core
   (:require [maximgb.re-service.core :refer [def-re-service
                                              def-re-service-command]
-                                             :include-macros true])) ;; <1>
+                                     :include-macros true])) ;; <1>
 
 (def-re-service ::my-service) ;; <2>
 
