@@ -19,8 +19,8 @@ A service can be defined using macros or function calls from `maximgb.re-service
 
 To define a service and it's implementation one have to:
 
-. define a service having  application unique id
-. define set of named commands by providing command id and implementing function for the service registed
+- define a service having  application unique id
+- define set of named commands by providing command id and implementing function for the service registed
 
 [source, clojure]
 ----
@@ -43,3 +43,33 @@ To define a service and it's implementation one have to:
 <4> - id `:sum`
 <5> - variable list of arguments (non-variable lists are also allowed)
 <6> - implementing function body
+
+=== Service commands invocation
+
+When service is defined a corresponding re-frame's co-effect and effect are registered using provided service id as co-effect/effect id.
+
+Thus each service command can be invoked as co-effect via re-frame's `(inject-cofx)` or as effect requested
+via `(reg-event-fx)` or `(reg-event-ctx)` return value.
+
+==== Calling service command as co-effect
+
+To call service command as co-effect a user have to use `(inject-cofx service-id [key? command-1-id [& args] command-2-id [& args]] ...)` syntax.
+
+Commands are executed in the given order each command is called with the given arguments. The results will be added to re-frame's co-effects
+map under `service-id` or `key?` (if one has been provided) key. The key value will be a map keyed by command ids, map values will be set to
+corresponding command invokation results.
+
+[source, clojure]
+----
+(reg-event-fx
+  ::my-command
+  [(inject-cofx ::my-service [:sum [1 2 3 4] :mul [1 2 3 4]])]
+  (fn [cofx]
+   (let [my-sum (get-in cofx [::my-service :sum])
+         my-mul (get-in cofx [::my-service :mul])]
+     (is (= my-sum 10) "Sum is correct")
+     (is (= my-mul 24) "Mul is correct"))
+     {}))
+----
+
+==== Calling service command as effect
