@@ -9,7 +9,9 @@
 
 
 (defmacro def-re-service-command
-  "Defines a service command."
+  "Defines a command with the given `command-id` for service designated by `service-id`.
+
+   Command recieves set of arguments defined in `args` vector and is implemented by given `fn-body`."
   [service-id command-id args & fn-body]
   `(register-service-command ~service-id
                              ~command-id
@@ -17,7 +19,11 @@
 
 
 (defmacro def-re-service-command-raw
-  "Defines a raw service command."
+  "Defines a raw service command.
+
+  Command recieves set of arguments defined in `args` vector and is implemented by given `fn-body`.
+  The difference from `(def-service-command)` is that `service-id` `command-id` will be passed
+  as the first and the second arguments in the `args` vector."
   [service-id command-id args & fn-body]
   `(register-service-command-raw ~service-id
                                  ~command-id

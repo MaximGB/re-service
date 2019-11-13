@@ -3,7 +3,7 @@
 image:https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
 image:https://img.shields.io/badge/License-MIT-yellow.svg[link=https://raw.githubusercontent.com/MaximGB/re-service/master/LICENSE]
 
-Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to service functions
+Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to implementing functions
 
 == TL;DR
 
