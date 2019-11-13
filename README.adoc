@@ -1,3 +1,12 @@
-= re-service image:https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
+= Re-service
+
+image:https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
+image:https://img.shields.io/badge/License-MIT-yellow.svg[link=https://raw.githubusercontent.com/MaximGB/re-service/master/LICENSE]
 
 Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to service functions
+
+== TL;DR
+
+Re-service allows re-frame user to easily define services. A service here is a named set of functions which provide co-effects
+and execute effects required or issued by re-frame event handlers. What re-service does is it translates re-frame co-effects/effects
+descriptors into service function calls return values.
