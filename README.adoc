@@ -10,3 +10,35 @@ Re-frame supplementary library to easily declare services and dispatch co-effect
 Re-service allows re-frame user to easily define services. A service here is a named set of functions which provide co-effects
 and execute effects required or issued by re-frame event handlers. What re-service does is it translates re-frame co-effects/effects
 descriptors into service function calls return values.
+
+== API
+
+=== Service definition
+
+A service can be define using macros or function calls from `maximgb.re-service.core` namespace.
+
+To define a service and it's implementation one have to:
+. define a service having  application unique id
+. define set of named commands by providing command id and implementing function for the service registed
+
+[source, clojure]
+----
+(ns my.service.core
+  (:require [maximgb.re-service.core :refer [def-re-service
+                                             def-re-service-command]
+                                             :include-macros true])) ;; <1>
+
+(def-re-service ::my-service) ;; <2>
+
+(def-re-service-command ::my-service ;; <3>
+                        :sum ;; <4>
+                        [& args] ;; <5>
+                        (apply + args)) ;; <6>
+----
+
+<1> Require `maximgb.re-service.core` namespace and refer to service and command definition macros.
+<2> Define service with application unique id
+<3> Define service command with:
+<4> - id `:sum`
+<5> - variable list of arguments (non-variable lists are also allowed)
+<6> - implementing function body
