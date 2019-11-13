@@ -55,7 +55,7 @@ via `(reg-event-fx)` or `(reg-event-ctx)` return value.
 
 To call service command as co-effect a user have to use `(inject-cofx service-id [key? command-1-id [& args] command-2-id [& args]] ...)` syntax.
 
-Commands are executed in the given order each command is called with the given arguments. The results will be added to re-frame's co-effects
+Commands are executed in the order each command is called with the given arguments. The results will be added to re-frame's co-effects
 map under `service-id` or `key?` (if one has been provided) key. The key value will be a map keyed by command ids, map values will be set to
 corresponding command invokation results.
 
@@ -63,13 +63,29 @@ corresponding command invokation results.
 ----
 (reg-event-fx
   ::my-command
-  [(inject-cofx ::my-service [:sum [1 2 3 4] :mul [1 2 3 4]])]
+  [(inject-cofx ::my-service [:sum [1 2 3 4] :mul [1 2 3 4]])] ;; <1>
   (fn [cofx]
-   (let [my-sum (get-in cofx [::my-service :sum])
-         my-mul (get-in cofx [::my-service :mul])]
+   (let [my-sum (get-in cofx [::my-service :sum])  ;; <2>
+         my-mul (get-in cofx [::my-service :mul])] ;; <3>
      (is (= my-sum 10) "Sum is correct")
      (is (= my-mul 24) "Mul is correct"))
      {}))
 ----
+<1> Injecting service co-effect, requesting two commands invokation (`:sum` and `:mul`) each will recieve the same list of parameters
+<2> Getting `:sum` command result
+<3> Getting `:mul` command result
 
 ==== Calling service command as effect
+
+To call service command as effect a user have to add to re-frame's effects map using `service-id` as effect id a value designating
+service commands invokation request (the value syntax is the same as for co-effect case)
+
+[source, clojure]
+----
+(reg-event-fx
+  ::my-command
+ (fn [cofx]
+  {::my-service [:sum [1 2 3 4] :mul [1 2 3 4]})) ;; <1>
+----
+<1> Of course `:sum` and `:mul` has no side-effects, thus calling'em as effects is meaningless, so here they are called for illustrative
+   reasons only.
