@@ -1,3 +1,5 @@
 = re-service
+
 image::https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
+
 Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to service functions
