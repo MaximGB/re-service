@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>maximgb</groupId>
   <artifactId>re-service</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <name>re-service</name>
   <description>Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to service functions.</description>
 
@@ -37,6 +37,21 @@
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
       <version>1.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojurescript</artifactId>
+      <version>1.10.520</version>
+    </dependency>
+    <dependency>
+      <groupId>reagent</groupId>
+      <artifactId>reagent</artifactId>
+      <version>0.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>re-frame</groupId>
+      <artifactId>re-frame</artifactId>
+      <version>0.10.6</version>
     </dependency>
   </dependencies>
 

@@ -20,6 +20,7 @@ gh: $(TARGET)
 
 
 $(TARGET): ./pom.xml ./src/**/*
+	clj -Spom
 	clj -A\:pack
 
 
