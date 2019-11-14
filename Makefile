@@ -2,7 +2,7 @@ TARGET = jar
 
 .PHONY: clean	run gh
 
--include .clojars
+-include ~/secrets/.clojars
 
 all : $(TARGET)
 
