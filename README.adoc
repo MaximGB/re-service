@@ -1,4 +1,5 @@
 = Re-service
+:icons: font
 
 image:https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
 image:https://img.shields.io/badge/License-MIT-yellow.svg[link=https://raw.githubusercontent.com/MaximGB/re-service/master/LICENSE]
