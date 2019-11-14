@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>maximgb</groupId>
+  <artifactId>re-service</artifactId>
+  <version>1.0.2</version>
+  <name>re-service</name>
+  <description>Re-frame supplementary library to easily declare services and dispatch co-effects/effects requests to service functions.</description>
+
+  <scm>
+    <connection>scm:git:git://github.com/MaximGB/re-service.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/MaximGB/re-service.git</developerConnection>
+    <url>https://github.com/MaximGB/re-service</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>maximgb</id>
+      <name>Maxim Bazhenov</name>
+      <url>https://www.max-bazhenov.com/</url>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Moscow</timezone>
+      <properties>
+        <picUrl>https://github.com/MaximGB.png</picUrl>
+      </properties>
+    </developer>
+  </developers>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.0</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://raw.githubusercontent.com/MaximGB/re-service/master/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+</project>
