@@ -1,5 +1,12 @@
 = Re-service
-:icons: font
+:source-highlighter: coderay
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning
+:endif::[]
 
 image:https://img.shields.io/clojars/v/maximgb/re-service.svg[link=https://clojars.org/maximgb/re-service]
 image:https://img.shields.io/badge/License-MIT-yellow.svg[link=https://raw.githubusercontent.com/MaximGB/re-service/master/LICENSE]
@@ -34,7 +41,7 @@ To define a service and it's implementation one have to:
 
 (def-re-service-command ::my-service ;; <3>
                         :sum ;; <4>
-                        [& args] ;; <5>
+                        [cofx & args] ;; <5>
                         (apply + args)) ;; <6>
 ----
 
@@ -59,6 +66,11 @@ To call service command as co-effect a user have to use `(inject-cofx service-id
 Commands are executed in the order each command is called with the given arguments. The results will be added to re-frame's co-effects
 map under `service-id` or `key?` (if one has been provided) key. The key value will be a map keyed by command ids, map values will be set to
 corresponding command invokation results.
+
+[NOTE]
+====
+If command is called as co-effect the first argument it recieves will be set to re-frame's co-effects map.
+====
 
 [source, clojure]
 ----

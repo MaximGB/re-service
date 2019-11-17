@@ -1,5 +1,6 @@
 (ns maximgb.re-service.core
   {:author "Maxim Bazhenov"}
+  (:require-macros [maximgb.re-service.core])
   (:require [re-frame.core :as rf]))
 
 
@@ -23,7 +24,7 @@
              (reduce (fn [result [command-id args]]
                        (assoc result
                               command-id
-                              (apply exec-service-command service-id command-id args)))
+                              (apply exec-service-command service-id command-id cofx args)))
                      {}
                      command-tupples)))))
 
@@ -73,14 +74,15 @@
 (defn register-service-command-raw
   "Register command with the given `command-id` for the service with the given `service-id`.
 
-   `handler` will be called with the `service-id` `command-id` as the first and second arguments, the rest arguments
-    will be taken from user's co-effects/effects service command invokation request.
+   `handler` will be called with the `service-id` `command-id` as the first and second arguments,
+   co-effects map will be passed as the third argument if handler is called as part of co-effect
+   injection, the rest arguments will be taken from user's co-effects/effects service command invokation request.
 
-    Example:
-    --------
-    (inject-cofx ::service-id [::command-id rest-arguments])
+   Example:
+   --------
+   (inject-cofx ::service-id [::command-id rest-arguments])
 
-    {::service-id [::command-id rest-arguments]}"
+   {::service-id [::command-id rest-arguments]}"
   [service-id command-id handler]
   (defmethod exec-service-command [service-id command-id] [& args] (apply handler args)))
 
@@ -88,13 +90,14 @@
 (defn register-service-command
   "Register command with the given `command-id` for the service with the given `service-id`.
 
-   `handler` will be called with the arguments taken from user's co-effects/effects service command invokation request.
+   `handler` will be called with the co-effects map as the first argument, if handler is called as part of co-effect
+   injection, the rest arguments will be taken from user's co-effects/effects service command invokation request.
 
-    Example:
-    --------
-    (inject-cofx ::service-id [::command-id rest-arguments])
+   Example:
+   --------
+   (inject-cofx ::service-id [::command-id rest-arguments])
 
-    {::service-id [::command-id rest-arguments]}"
+   {::service-id [::command-id rest-arguments]}"
   [service-id command-id handler]
   (register-service-command-raw service-id
                                 command-id

@@ -26,14 +26,14 @@
 
              (register-service-command ::test-service
                                        ::command-1
-                                       (fn [& args]
+                                       (fn [cofx & args]
                                          (casync/put! c args)
                                          ::command-1-result))
 
 
              (register-service-command ::test-service
                                        ::command-2
-                                       (fn [& args]
+                                       (fn [cofx & args]
                                          (casync/put! c (reverse args))
                                          ::command-2-result))
 

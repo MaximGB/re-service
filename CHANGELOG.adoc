@@ -1,0 +1,14 @@
+= Changelog
+:source-highlighter: coderay
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning
+:endif::[]
+
+== 1.0.4
+
+- Commands executed as co-effects now recieve co-effect map. Normal commands as the first arguments, raw commands as the third, since
+ first and second are service id / command id

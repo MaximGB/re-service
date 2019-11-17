@@ -23,12 +23,12 @@
 
     (def-re-service-command ::my-service
                             ::my-sum
-                            [& args]
+                            [cofx & args]
                             (apply + args))
 
     (def-re-service-command-raw ::my-service
                                 ::my-sum-raw
-                                [service-id command-id & args]
+                                [service-id command-id cofx & args]
                                 {[service-id command-id] (apply + args)})))
 
 
